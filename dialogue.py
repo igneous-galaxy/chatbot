@@ -47,14 +47,3 @@ def response(user_response):
                 bot_response += random.choice(RANDOM_RESPONSES)
     sent_tokens.remove(user_response)
     return bot_response
-
-
-flag = True
-print('Hi! I am really stupid!!!')
-while flag:
-    user_response = input().lower()
-    if user_response == 'bye':
-        flag = False
-        print('BYEEE')
-    else:
-        print(response(user_response))
