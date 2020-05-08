@@ -36,6 +36,9 @@ f.close()
 f = open('texts/slime molds.txt')
 slime_lines = f.readlines()
 f.close()
+f = open('texts/Look What You Made Me Do.txt')
+tay_lines = f.readlines()
+f.close()
 
 
 def text(some_lines):
@@ -48,3 +51,4 @@ def text(some_lines):
 
 london_text = text(arch_lines)
 slime_text = text(slime_lines)
+tay_text = text(tay_lines)

@@ -14,6 +14,7 @@ RANDOM_RESPONSES = ['ExTeRmiNaTe', 'I don\'t understand. And what? Gonna bully m
 movie_lines_sent_tokens = nltk.sent_tokenize(convs.movie_text)
 london_sent_tokens = nltk.sent_tokenize(convs.london_text)
 slime_sent_tokens = nltk.sent_tokenize(convs.slime_text)
+tay_sent_tokens = nltk.sent_tokenize(convs.tay_text)
 remove_punctuation_dict = dict((ord(pun), None) for pun in string.punctuation)
 
 
@@ -73,18 +74,19 @@ def normal_response(user_response, sent_tokens):
 
 
 def which_response(user_response, number):
-    if number == 1:
+    if number == 'london':
         return normal_response(user_response, london_sent_tokens)
-    elif number == 0:
+    elif number == 'movie':
         return weird_response(user_response)
-    elif number == 2:
+    elif number == 'slime':
         return normal_response(user_response, slime_sent_tokens)
+    elif number == 'taylor':
+        return normal_response(user_response, tay_sent_tokens)
 
-# testing
 # while True:
 #     print('!!')
 #     a = input()
 #     if a == 0:
 #         break
 #     else:
-#         print(which_response(a, int(input())))
+#         print(which_response(a, input()))
