@@ -2,7 +2,7 @@
 {
     "ru": 
         {
-            "talk": "В каком году была война 1812 года?",
+            "talk": ["talk using movie phrases", "Taylor Swift`s songs", "slime molds", "London architecture"],
             "translate": ["ru -> en", "en -> ru"],
             "lessons": ["many/much", "предлоги", "Present Simple", "can/could", "неправильные глаголы"],
             "test": ["Passive voice", "Past simple"],
@@ -11,7 +11,7 @@
 
     "en": 
     {
-        "talk": "В каком году была война 1812 года?",
+        "talk": ["talk using movie phrases", "Taylor Swift`s songs", "slime molds", "London architecture"],
         "translate": ["ru -> en", "en -> ru"],
         "lessons": ["many/much", "prepositions", "Present Simple", "can/could", "irregular verbs"],
         "test": ["Passive voice", "Past simple"],

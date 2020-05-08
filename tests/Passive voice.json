@@ -1,0 +1,54 @@
+{
+    "test": [
+        {
+            "question": "The chef has made dinner",
+            "response": "dinner has been made by the chef",
+            "task": "Turn the Active Voice into the Passive Voice. Include the doer of the action."
+        },
+        {
+            "question": "The letter ____ tomorrow.",
+            "response": "will be sent",
+            "task": "Choose the right form of the verb."
+        },
+        {
+            "question": "I saw an accident some minutes ago. Two people ______ to the hospital. (take)",
+            "response": "were taken",
+            "task": "Write the correct form of the verb. Use passive voice."
+        },
+        {
+            "question": "Jim’s car was stolen last night. ",
+            "response": "was jim’s car stolen last night?",
+            "task": "Write general questions for these sentences in the Passive Voice."
+        },
+        {
+            "question": "how/ this text / translate/ yesterday?",
+            "response": "how was this text translated yesterday?",
+            "task": "Write the words into the correct order. Use full verb forms in sentences."
+        },
+        {
+            "question": "Many British programs ______ on TV every day. (show)",
+            "response": "are shown",
+            "task": "Write the correct form of the verb. Use passive voice."
+        },
+        {
+            "question": "An explorer has found a dinosaur egg",
+            "response": "a dinosaur egg has been found by an explorer",
+            "task": "Turn the Active Voice into the Passive Voice. Include the doer of the action."
+        },
+        {
+            "question": "Jenny did not break the vase",
+            "response": "the vase was not broken by jenny",
+            "task": "Turn the Active Voice into the Passive Voice. Include the doer of the action."
+        },
+        {
+            "question": "Kate is using the computer now",
+            "response": "the computer is being used by kate now",
+            "task": "Turn the Active Voice into the Passive Voice. Include the doer of the action."
+        },
+        {
+            "question": "The walls ____ every year",
+            "response": "are painted",
+            "task": "Choose the right form of the verb."
+        }
+    ]
+}

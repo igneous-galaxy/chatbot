@@ -1,7 +1,7 @@
 from telegram.ext import Updater, MessageHandler, Filters
 from telegram.ext import CallbackContext, CommandHandler, ConversationHandler
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
-from reader import TOKEN, TEXT, COMMANDS, read_json
+from reader import TOKEN, TEXT, COMMANDS, read_json, LESSONS
 from data import db_session
 from data.users import User
 from data.films import Film
@@ -15,6 +15,7 @@ db_session.global_init("db/global.sqlite")
 session = db_session.create_session()
 test_dict = {}
 translate_dict = {}
+talking_now = {}
 
 
 def start(update, context):
@@ -93,7 +94,6 @@ def recommend(update, context):
 
 
 def get_rec(update, context):
-    print(1)
     id = update.message.from_user.id
     user = session.query(User).filter(User.id == id).first()
 
@@ -196,11 +196,74 @@ def go_test(update, context):
 
 
 def lesson(update, context):
-    pass
+    id = update.message.from_user.id
+    user = session.query(User).filter(User.id == id).first()
+
+    commands = ReplyKeyboardMarkup([COMMANDS[user.mode]['lessons'] + ['❌']], one_time_keyboard=True)
+
+    text = TEXT[user.mode]['lessons'][0]
+
+    update.message.reply_text(text, reply_markup=commands)
+
+    return 1
+
+
+def send_lesson(update, context):
+    id = update.message.from_user.id
+    user = session.query(User).filter(User.id == id).first()
+
+    update.message.reply_photo(photo=open(f'lessons/{LESSONS[update.message.text]}', 'rb'))
+    print('ok')
+    update.message.reply_text(TEXT[user.mode]['lessons'][1])
+
+    return 1
 
 
 def talk(update, context):
-    pass
+    id = update.message.from_user.id
+    user = session.query(User).filter(User.id == id).first()
+
+    if id not in talking_now.keys():
+        test_dict[id] = update.message.text
+        text = TEXT[user.mode]['talk'][1]
+    else:
+        pass
+
+    current = test_dict[id]
+    text = current.ask_next()
+    print(text)
+
+    if text['count'] == 10:
+        count = current.get_result()
+
+        user = session.query(User).filter(User.id == id).first()
+        res = TEXT[user.mode]['test']
+
+        update.message.reply_text(f'{res[1]} {count}/10\n{res[2]}', reply_markup=ReplyKeyboardRemove())
+        del test_dict[id]
+
+        return ConversationHandler.END
+    elif text['markup'] is not None:
+        markup = ReplyKeyboardMarkup([text['markup'] + ['❌']], one_time_keyboard=True)
+        update.message.reply_text(text['text'], reply_markup=markup)
+    else:
+        markup = ReplyKeyboardMarkup([['❌']], one_time_keyboard=True)
+        update.message.reply_text(text['text'], reply_markup=markup)
+
+    return 1
+
+
+def pick_up_topic(update, context):
+    id = update.message.from_user.id
+    user = session.query(User).filter(User.id == id).first()
+
+    text = TEXT[user.mode]['talk'][0]
+    commands = COMMANDS[user.mode]['talk'] + ['❌']
+    markup = ReplyKeyboardMarkup([commands], one_time_keyboard=True)
+
+    update.message.reply_text(text, reply_markup=markup)
+
+    return 1
 
 
 def ru(update, context):
@@ -264,6 +327,23 @@ def main():
         allow_reentry=True
     )
 
+    lesson_handler = ConversationHandler(
+        entry_points=[CommandHandler('lesson', lesson)],
+        states={
+            1: [MessageHandler(Filters.text & (~Filters.text(['❌'])), send_lesson)]
+        },
+        fallbacks=[MessageHandler(Filters.text(['❌']), cancel)],
+        allow_reentry=True
+    )
+
+    talk_handler = ConversationHandler(
+        entry_points=[CommandHandler('talk', pick_up_topic)],
+        states={
+            1: [MessageHandler(Filters.text & (~Filters.text(['❌'])), talk)]
+        },
+        fallbacks=[MessageHandler(Filters.text(['❌']), cancel)],
+        allow_reentry=True
+    )
 
     print('start')
     updater = Updater(TOKEN, use_context=True)
@@ -278,6 +358,7 @@ def main():
     dp.add_handler(rec_handler)
     dp.add_handler(test_handler)
     dp.add_handler(translate_handler)
+    dp.add_handler(lesson_handler)
 
     updater.start_polling()
 
