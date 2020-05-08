@@ -2,3 +2,4 @@ pip requirements:
 python-telegram-bot
 sklearn
 nltk
+requests

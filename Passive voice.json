@@ -1,0 +1,54 @@
+{
+  "test": [
+    {
+      "question": "Two years ago I ____ my old aunt in a small old town.",
+      "response": "visited",
+      "answers": ["will be visiting", "visited", "to visit", "have visitten"]
+    },
+    {
+      "question": "It ____ a long visit as my aunt ____ well.",
+      "response": "was, didn't feel",
+      "answers": ["was, didn't feel", "did, wasn't feel", "were, don't felt", "was, will have felt"]
+    },
+    {
+      "question": "I ____ to ____ medicine and food.",
+      "response": "had, buy",
+      "answers": ["had, bought", "had, buying", "had, buy", "have had, bought"]
+    },
+    {
+      "question": "I also ____ dinner and ____ about the house.",
+      "response": "cooked, helped",
+      "answers": ["cook, help", "cooked, helped", "cooked, help", "cook, helped"]
+    },
+    {
+      "question": "One day my aunt asked me: \" ____ the flowers in the garden yesterday?\"",
+      "response": "Did you water",
+      "answers": ["You did watered", "Did you watered", "You did water", "Did you water"]
+    },
+    {
+      "question": "I ____ very surprised as she usually ____ it herself.",
+      "response": "was, did",
+      "answers": ["did, was", "was, did", "was, doed", "was, done"]
+    },
+    {
+      "question": "But in those days my aunt was so weak, that she ____ any work in the garden.",
+      "response": "couldn't do",
+      "answers": ["cannot did", "couldn't do", "couldn't did", "cannot done"]
+    },
+    {
+      "question": "So I ____ to take care of her flowers too.",
+      "response": "tried",
+      "answers": ["have tryed", "had tryed", "tryed", "tried"]
+    },
+    {
+      "question": "Fortunately in three weeks my aunt ____ better.",
+      "response": "got",
+      "answers": ["to get", "got", "gotten", "gone"]
+    },
+    {
+      "question": "And I ____ some free time and ____ sightseeing.",
+      "response": "had, enjoyed",
+      "answers": ["had, enjoyed", "have, enjoyed", "haved, enjoyed", "had, enjoied"]
+    }
+  ]
+}
