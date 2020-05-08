@@ -1,0 +1,21 @@
+
+{
+    "ru": 
+        {
+            "talk": "В каком году была война 1812 года?",
+            "translate": ["ru -> en", "en -> ru"],
+            "lessons": ["many/much", "предлоги", "Present Simple", "can/could", "неправильные глаголы"],
+            "test": ["Passive voice", "Past simple"],
+            "rec": ["фильм", "книга", "❌"]
+        },
+
+    "en": 
+    {
+        "talk": "В каком году была война 1812 года?",
+        "translate": ["ru -> en", "en -> ru"],
+        "lessons": ["many/much", "prepositions", "Present Simple", "can/could", "irregular verbs"],
+        "test": ["Passive voice", "Past simple"],
+        "rec": ["film", "book", "❌"]
+    }
+    
+}

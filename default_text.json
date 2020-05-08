@@ -2,26 +2,26 @@
 {
     "ru": 
         {
-            "start": "русс текст /help /ru /en",
-            "help": "хелпаю бро",
+            "start": "Привет, я англоговорящий бот Oh Sir, рад тебя видеть!\nЕсли ты хочешь, чтобы я говорил только на английском, вызови /en.\nА вообще, я умею много всего. Вызови /help, чтобы узнать, что именно.",
+            "help": "Вот, что я умею:\n1. /help - я покажу тебе это сообщение\n2. /talk - я поговорю с тобой на отвлеченную тему\n3. /translate - я могу тебе что-то перевести\n 4. /lesson - поделюсь с тобой знаниями английского\n 5. /test - я пришлю тебе тест, который ты можешь пройти и проверить свои знания\n6. /recommend - порекомендую тебе ресурс для практического познания английского\n7. /en - начту говорить с тобой только на английском языке\nВот так, выбирай.",
             "talk": "В каком году была война 1812 года?",
-            "translate": "В каком году была война 1812 года?",
+            "translate": ["Выбери направление перевода", "Отлично, теперь введи текст, который нужно перевести (следи за правильностью написания слов!)\nЕсли захочешь выйти из переводчика, нажми отмену на клавиатуре (❌)"],
             "lessons": "В каком году была война 1812 года?",
-            "test": "В каком году была война 1812 года?",
-            "rec": "В каком году была война 1812 года?",
-            "correct": "В каком году была война 1812 года?"
+            "test": ["Какой тест ты хочешь пройти?", "Твой результат:", "Вызови команду /help, чтобы узнать что я еще могу."],
+            "rec": ["Хорошо, что ты хочешь: почитать или посмотреть?", "Отлично, держи:\n\n"],
+            "cancel": "Ладно :(\nМожешь попробовать что-то другое.\nВызови команду /help, чтобы узнать что я могу."
         },
 
     "en": 
     {
-        "start": "eng text /help /ru /en",
-        "help": "helping bro",
+        "start": "Hi there, I`m an English-speaking bot Oh Sir, glad to see you!\nIf you want me to speak only Russian, you can call /ru command.\nIn general, I can do many things. Call /help command to find out what I mean.",
+        "help": "That`s what I can do:\n1. /help - I`ll show you this message\n2. /talk - I`ll talk with you on an abstract topic\n3. /translate -I can translate you something\n 4. /lesson - I`ll share some English knowledge with you\n 5. /test - I`ll send you a test that you can try to pass and that will challenge you \n6. /recommend - I`ll recommend you some resourses to practice \n7. /ru - I`ll start speaking only Russian\nThat`s it, now you can choose.",
         "talk": "В каком году была война 1812 года?",
-        "translate": "В каком году была война 1812 года?",
+        "translate": ["Choose the directrion of translation", "Well, now send text that is needed to be translated (make sure all words are writted correctly!)\nIf you want to leave translator, press ❌ on keybord"],
         "lessons": "В каком году была война 1812 года?",
-        "test": "В каком году была война 1812 года?",
-        "rec": "В каком году была война 1812 года?",
-        "correct": "В каком году была война 1812 года?"
+        "test": ["What test do you want to pass?", "Your result is", "Call /help command to find out what I can do."],
+        "rec": ["Well, do you want to read something or to watch?", "Here you are:\n\n"],
+        "cancel": "Well:(\nYou can try something else.\nCall /help command to find out what I can do."
     }
     
 }
