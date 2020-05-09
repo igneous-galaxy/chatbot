@@ -28,8 +28,7 @@ Run Bot.py
 
 ## Deployment
 
-Get TOKEN from GodFather
-Write it in settings.ini
+Get TOKEN from GodFather and write it in settings.ini
 ```
 [Bot]
 token=YOUR_TOKEN
