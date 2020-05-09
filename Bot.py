@@ -1,7 +1,7 @@
 from telegram.ext import Updater, MessageHandler, Filters
 from telegram.ext import CallbackContext, CommandHandler, ConversationHandler
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
-from reader import TOKEN, TEXT, COMMANDS, read_json, LESSONS
+from reader import TOKEN, TEXT, COMMANDS, read_json, LESSONS, TALKING
 from data import db_session
 from data.users import User
 from data.films import Film
@@ -9,6 +9,7 @@ from data.books import Book
 from random import randint
 from test_class import Test
 import requests
+from dialogue import which_response
 
 
 db_session.global_init("db/global.sqlite")
@@ -222,33 +223,16 @@ def send_lesson(update, context):
 def talk(update, context):
     id = update.message.from_user.id
     user = session.query(User).filter(User.id == id).first()
+    markup = ReplyKeyboardMarkup([['❌']])
 
     if id not in talking_now.keys():
-        test_dict[id] = update.message.text
-        text = TEXT[user.mode]['talk'][1]
-    else:
-        pass
+        talking_now[id] = update.message.text
 
-    current = test_dict[id]
-    text = current.ask_next()
-    print(text)
+        update.message.reply_text(TEXT[user.mode]['talk'][1], reply_markup=markup)
+        return 1
 
-    if text['count'] == 10:
-        count = current.get_result()
-
-        user = session.query(User).filter(User.id == id).first()
-        res = TEXT[user.mode]['test']
-
-        update.message.reply_text(f'{res[1]} {count}/10\n{res[2]}', reply_markup=ReplyKeyboardRemove())
-        del test_dict[id]
-
-        return ConversationHandler.END
-    elif text['markup'] is not None:
-        markup = ReplyKeyboardMarkup([text['markup'] + ['❌']], one_time_keyboard=True)
-        update.message.reply_text(text['text'], reply_markup=markup)
-    else:
-        markup = ReplyKeyboardMarkup([['❌']], one_time_keyboard=True)
-        update.message.reply_text(text['text'], reply_markup=markup)
+    response = which_response(update.message.text, TALKING[talking_now[id]])
+    update.message.reply_text(response, reply_markup=markup)
 
     return 1
 
@@ -299,6 +283,7 @@ def cancel(update, context):
 
 
 def main():
+    print('ghjk')
     rec_handler = ConversationHandler(
         entry_points=[CommandHandler('recommend', recommend)],
         states={
@@ -359,6 +344,7 @@ def main():
     dp.add_handler(test_handler)
     dp.add_handler(translate_handler)
     dp.add_handler(lesson_handler)
+    dp.add_handler(talk_handler)
 
     updater.start_polling()
 

@@ -17,3 +17,8 @@ COMMANDS = read_json('commands.json')
 
 LESSONS = {'many/much': 'many_much.jpg', 'предлоги': 'prepositions.jpg', 'Present Simple': 'Present Simple.jpg', 'can/could': 'can_could.jpg',
            'неправильные глаголы': 'irregular_verbs.jpg', 'prepositions': 'prepositions.jpg', 'irregular verbs': 'irregular_verbs.jpg'}
+
+TALKING = {'talk using movie phrases': 'movie',
+           'Taylor Swift`s songs': 'taylor',
+           'slime molds': 'slime',
+           'London architecture': 'london'}
