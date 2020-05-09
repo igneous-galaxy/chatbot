@@ -3,7 +3,7 @@ import string
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import nltk
-import convs
+import all_comands.talking.convs as convs
 
 # nltk.download('punkt', quiet=True)
 # nltk.download('wordnet', quiet=True)

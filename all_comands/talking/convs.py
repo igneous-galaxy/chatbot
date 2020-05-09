@@ -1,5 +1,5 @@
 # до 32 строки идет обработка текстов с диалогами из фильмов
-f = open('texts/movie_conversations.txt')
+f = open('all_comands/texts/movie_conversations.txt')
 conversations = f.readlines()
 f.close()
 # словарь, в котором ключ - это первая фраза, а значение - следующая за ней (фразы в виде меток)
@@ -11,7 +11,7 @@ for i in range(len(conversations)):
     for j in range(len(conversations[i]) - 1):
         line_after_line[conversations[i][j]] = conversations[i][j + 1]  # добавляем данные в словарь
 main_lines = line_after_line.keys()  # id реплик, на которые можно ответить
-f = open('texts/movie_lines.txt')
+f = open('all_comands/texts/movie_lines.txt')
 movie_lines = f.readlines()
 f.close()
 # словарь с метками фраз и самими фразами и наборот
@@ -30,13 +30,13 @@ movie_text = ''
 for i in main_lines:
     movie_text += lines[i]
 
-f = open('texts/Architecture of London.txt')
+f = open('all_comands/texts/Architecture of London.txt')
 arch_lines = f.readlines()
 f.close()
-f = open('texts/slime molds.txt')
+f = open('all_comands/texts/slime molds.txt')
 slime_lines = f.readlines()
 f.close()
-f = open('texts/Look What You Made Me Do.txt')
+f = open('all_comands/texts/Look What You Made Me Do.txt')
 tay_lines = f.readlines()
 f.close()
 
