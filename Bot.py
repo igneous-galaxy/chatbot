@@ -77,7 +77,6 @@ def help(update, context):
     user = session.query(User).filter(User.id == id).first()
 
     text = TEXT[user.mode]['help']
-
     update.message.reply_text(text)
 
 
@@ -173,7 +172,6 @@ def go_test(update, context):
 
     current = test_dict[id]
     text = current.ask_next()
-    print(text)
 
     if text['count'] == 10:
         count = current.get_result()
@@ -214,7 +212,6 @@ def send_lesson(update, context):
     user = session.query(User).filter(User.id == id).first()
 
     update.message.reply_photo(photo=open(f'lessons/{LESSONS[update.message.text]}', 'rb'))
-    print('ok')
     update.message.reply_text(TEXT[user.mode]['lessons'][1])
 
     return 1
@@ -226,12 +223,12 @@ def talk(update, context):
     markup = ReplyKeyboardMarkup([['❌']])
 
     if id not in talking_now.keys():
-        talking_now[id] = update.message.text
+        talking_now[id] = TALKING[update.message.text]
 
-        update.message.reply_text(TEXT[user.mode]['talk'][1], reply_markup=markup)
+        update.message.reply_text(TEXT[user.mode][talking_now[id]], reply_markup=markup)
         return 1
 
-    response = which_response(update.message.text, TALKING[talking_now[id]])
+    response = which_response(update.message.text, talking_now[id])
     update.message.reply_text(response, reply_markup=markup)
 
     return 1
@@ -241,7 +238,7 @@ def pick_up_topic(update, context):
     id = update.message.from_user.id
     user = session.query(User).filter(User.id == id).first()
 
-    text = TEXT[user.mode]['talk'][0]
+    text = TEXT[user.mode]['talk']
     commands = COMMANDS[user.mode]['talk'] + ['❌']
     markup = ReplyKeyboardMarkup([commands], one_time_keyboard=True)
 
@@ -277,13 +274,18 @@ def cancel(update, context):
     if id in test_dict.keys():
         del test_dict[id]
 
+    if id in talking_now.keys():
+        del talking_now[id]
+
+    if id in translate_dict.keys():
+        del translate_dict[id]
+
     text = TEXT[user.mode]['cancel']
 
     update.message.reply_text(text)
 
 
 def main():
-    print('ghjk')
     rec_handler = ConversationHandler(
         entry_points=[CommandHandler('recommend', recommend)],
         states={
