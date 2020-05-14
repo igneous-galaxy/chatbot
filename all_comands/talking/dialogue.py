@@ -5,8 +5,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 import nltk
 import all_comands.talking.convs as convs
 
-# nltk.download('punkt', quiet=True)
-# nltk.download('wordnet', quiet=True)
+nltk.download('punkt', quiet=True)
+nltk.download('wordnet', quiet=True)
 
 RANDOM_RESPONSES = ['ExTeRmiNaTe', 'I don\'t understand. And what? Gonna bully me?',
                     'It\'s time to stop!', 'WHAT?', 'You know...', 'Ask google', 'I\'m not interested']
