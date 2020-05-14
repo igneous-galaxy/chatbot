@@ -1,0 +1,9 @@
+pip install python-telegram-bot
+pip install sklearn
+pip install nltk
+pip install requests
+pip install PySocks
+pip install sqlalchemy
+pip install wheel
+nltk.download('punkt', quiet=True)
+nltk.download('wordnet', quiet=True)
